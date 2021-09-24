@@ -1,0 +1,12 @@
+BANCODADOS
+POSTGRES
+ENDERECO
+localhost
+PORTA
+5432
+BANCO
+teste
+USUARIO
+postgres
+SENHA
+zetsu1958
