@@ -38,7 +38,6 @@ public class ConexaoPostgres {
             Class.forName(propriedadesBD.getDriver());
 
             this.setCon((Connection) DriverManager.getConnection(propriedadesBD.getUrl(), propriedadesBD.getUsuario(), propriedadesBD.getSenha()));
-            //se ocorrer tudo bem, ou seja, se conectar a linha a segui é executada
             this.status = true;
             
         } catch (ClassNotFoundException ex) {
@@ -59,10 +58,8 @@ public class ConexaoPostgres {
      */
     public boolean executarSQL(String pSQL){
         try {
-            //createStatement de con para criar o Statement
             this.setStatement(getCon().createStatement());
 
-            // Definido o Statement, executamos a query no banco de dados
             this.setResultSet(getStatement().executeQuery(pSQL));
             
         } catch (SQLException ex) {
@@ -74,10 +71,8 @@ public class ConexaoPostgres {
     
     public boolean executarUpdateDeleteSQL(String pSQL){
         try {         
-            //createStatement de con para criar o Statement
             this.setStatement(getCon().createStatement());
 
-            // Definido o Statement, executamos a query no banco de dados
             getStatement().execute(pSQL);
             
         } catch (SQLException ex) {
@@ -94,13 +89,11 @@ public class ConexaoPostgres {
      */
     public boolean insertSQL(String pSQL){
         try {
-            //createStatement de con para criar o Statement
+
             this.setStatement(getCon().createStatement());
 
-            // Definido o Statement, executamos a query no banco de dados
             this.getStatement().execute(pSQL);
-            
-            //consulta o último id inserido
+
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
